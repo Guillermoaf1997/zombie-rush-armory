@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#151515" />
+  <title>Zombie Rush: Armory</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <div class="brand">🧟 Zombie Rush: Armory</div>
+      <button id="muteButton" class="ui-button ui-button--small" type="button">🔊 Sonido</button>
+    </header>
+
+    <main class="game-layout">
+      <section class="game-panel">
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+        <div id="startScreen" class="overlay overlay--visible">
+          <div class="card">
+            <p class="eyebrow">Supervivencia por oleadas</p>
+            <h1>Zombie Rush: Armory</h1>
+            <p>
+              Eres el último superviviente en una ciudad arrasada. Aguanta las oleadas,
+              gana monedas, compra armas entre rondas y elimina a tantos zombis como puedas.
+            </p>
+            <div class="feature-list">
+              <div><strong>Movimiento:</strong> WASD / flechas / stick táctil</div>
+              <div><strong>Disparo:</strong> automático al zombi más cercano</div>
+              <div><strong>Tienda:</strong> entre oleadas puedes mejorar tu arsenal</div>
+            </div>
+            <div class="actions">
+              <button id="startButton" class="ui-button ui-button--primary" type="button">Jugar</button>
+              <button id="howToButton" class="ui-button" type="button">Cómo jugar</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="instructionsScreen" class="overlay">
+          <div class="card">
+            <p class="eyebrow">Cómo jugar</p>
+            <h2>Reglas</h2>
+            <ul class="instructions-list">
+              <li>Sobrevive a oleadas cada vez más grandes.</li>
+              <li>Mata zombis para ganar puntuación y monedas.</li>
+              <li>Al final de cada oleada entras en la tienda.</li>
+              <li>Compra mejores armas o cura vida antes de seguir.</li>
+              <li>Si los zombis te bajan la vida a 0, la partida termina.</li>
+            </ul>
+            <div class="actions">
+              <button id="backMenuButton" class="ui-button" type="button">Volver</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="shopScreen" class="overlay">
+          <div class="card card--wide">
+            <p class="eyebrow">Tienda entre oleadas</p>
+            <h2 id="shopTitle">Oleada superada</h2>
+            <p id="shopSubtitle">Compra armas y mejoras antes de seguir.</p>
+
+            <div class="shop-grid" id="shopGrid"></div>
+
+            <div class="shop-footer">
+              <div>
+                <strong>Monedas:</strong> <span id="shopCoins">0</span>
+              </div>
+              <div class="actions">
+                <button id="nextWaveButton" class="ui-button ui-button--primary" type="button">Siguiente oleada</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="gameOverScreen" class="overlay">
+          <div class="card">
+            <p class="eyebrow">Fin de la partida</p>
+            <h2>Los zombis te han atrapado</h2>
+            <p id="finalStats">Puntuación: 0 · Oleada: 1 · Bajas: 0</p>
+            <p id="bestStats">Récord: 0</p>
+            <div class="actions">
+              <button id="restartButton" class="ui-button ui-button--primary" type="button">Reintentar</button>
+              <button id="menuButton" class="ui-button" type="button">Menú</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="info-card">
+          <h2>Loop</h2>
+          <p>Luchar → cobrar monedas → comprar armas → sobrevivir a la siguiente oleada.</p>
+        </div>
+        <div class="info-card">
+          <h2>Armas</h2>
+          <p>Pistola, SMG, Escopeta, Rifle y mejoras de cadencia, daño y curación.</p>
+        </div>
+        <div class="info-card">
+          <h2>Meta</h2>
+          <p>Llega a la oleada 10. Si sobrevives más, conviértelo en un score attack infinito.</p>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
